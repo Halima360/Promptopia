@@ -18,9 +18,9 @@ const PromptCardList =({data, handleTagClick}) =>{
 
 const Feed = () => {
   const [searchText, setSearchText] = useState('');
+  const [posts, setPosts] = useState([])
   const [searchTimeout, setSearchTimeout] = useState(null);
-  const [posts, setPosts] = useState([]);
-  const [searchedResults, setSearchedResults] = useState([]);
+   const [searchedResults, setSearchedResults] = useState([]);
   useEffect(() => {
     const fetchPosts = async () =>{
       const response = await fetch('/api/prompt');
@@ -39,7 +39,7 @@ const Feed = () => {
     )
   }
   const handleSearchChange = (e) => {
-    clearTimeout(setSearchTimeout);
+     clearTimeout(setSearchTimeout);
     setSearchText(e.target.value);
 
      // debounce method
@@ -69,6 +69,8 @@ const Feed = () => {
       (<PromptCardList  data={posts} handleTagClick={handleTagClick} />)}
       
       
+     {searchText ? (<PromptCardList data={searchedResults} handleTagClick={handleTagClick}/>) :
+      (<PromptCardList  data={posts} handleTagClick={handleTagClick} />)}
       
       
     </section>
