@@ -39,7 +39,7 @@ const Feed = () => {
     )
   }
   const handleSearchChange = (e) => {
-     clearTimeout(setSearchTimeout);
+     clearTimeout(searchTimeout);
     setSearchText(e.target.value);
 
      // debounce method
