@@ -5,7 +5,7 @@ import PromptCard from './PromptCard';
 const PromptCardList =({data, handleTagClick}) =>{
   return (
     <div className='mt-16 prompt_layout'>
-      {data.map((post) =>(
+      {data?.map((post) =>(
         <PromptCard
         key={post._id}
         post={post}
@@ -32,7 +32,7 @@ const Feed = () => {
   }, [])
   const filterPrompts = (searchText)=>{
     const regEx = new RegExp(searchText, "i")
-    posts.filter((post) =>
+    return posts.filter((post) =>
       regEx.test(post.creator.username) ||
       regEx.test(post.tag) ||
       regEx.test(post.prompt)
